@@ -40,19 +40,6 @@ pipeline {
                 '''
             }
         }
-        stage('Test API') {
-            agent{
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
-            steps {
-                sh ''''
-                    echo "/Users/macsho/Programming/Python/Postman/newman/run_newman.sh"
-                '''
-            }
-        }
         stage('Deploy') {
             agent{
                 docker {
