@@ -69,9 +69,9 @@ pipeline {
                 echo 'Cloning repo…'
                 git branch: 'master',
                     url:    'https://github.com/shovalsolo/Python_Selenium_Framework.git'
-                    
+
                 echo 'Launching container for pytest…'
-                sh 'node_modules/.bin/python3 -m unittest tests/test_showcase.py'
+                sh 'node_modules/.bin/pytest --html=reports/full_report.html --self-contained-html -v'
             }
         }
         stage('Deploy') {
