@@ -4,6 +4,7 @@ pipeline {
     environment {
         NETLIFY_SITE_ID = '4d24f802-8dec-4401-a1a0-4b965cbc9f86'
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
+        apikey = credentials('postman-token')
     }
 
     stages {
@@ -37,6 +38,7 @@ pipeline {
                 sh '''
                     test -f build/index.html
                     echo "Hello Test stage"
+                    newman run "https://api.getpostman.com/collections/2506820-3cc8834e-0344-4217-8a5f-209de287b5eb?apikey=${apikey}" \  -e "https://api.getpostman.com/environments/2506820-66734cba-0764-4875-b92f-7eb8a6d12c12?apikey=${apikey}"
                 '''
             }
         }
