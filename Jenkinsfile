@@ -70,7 +70,8 @@ pipeline {
                 git branch: 'master',
                     url:    'https://github.com/shovalsolo/Python_Selenium_Framework.git'
                 sh '''
-                        brew install python
+                        sudo apt update
+                        sudo apt install python3 python3-pip
                         node_modules/.bin/python --version
                         node_modules/.bin/python3 --version
                     '''
