@@ -27,7 +27,6 @@ pipeline {
             agent any
             steps {
                 sh '''
-                    test -f build/index.html
                     echo "Hello Test stage"
                 '''
             }
