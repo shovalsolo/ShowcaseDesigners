@@ -37,30 +37,31 @@ pipeline {
             steps {
                 sh '''
                     test -f build/index.html
-                    echo "Hello Test stage"
+                    echo "Run collection -> Reqres - REST API basic CRUD"
                     npm install newman
                     node_modules/.bin/newman --version
                     node_modules/.bin/newman run "https://api.getpostman.com/collections/2506820-3cc8834e-0344-4217-8a5f-209de287b5eb?apikey=${apikey}" "\"  -e "https://api.getpostman.com/environments/2506820-66734cba-0764-4875-b92f-7eb8a6d12c12?apikey=${apikey}"
                 '''
             }
         }
-        // stage('Test UI') {
-        //     agent{
-        //         docker {
-        //             image 'node:18-alpine'
-        //             reuseNode true
-        //         }
-        //     }
-        //     steps {
-        //         sh '''
-        //             test -f build/index.html
-        //             echo "Hello Test stage"
-        //             npm install newman
-        //             node_modules/.bin/newman --version
-        //             node_modules/.bin/newman run "https://api.getpostman.com/collections/2506820-3cc8834e-0344-4217-8a5f-209de287b5eb?apikey=${apikey}" "\"  -e "https://api.getpostman.com/environments/2506820-66734cba-0764-4875-b92f-7eb8a6d12c12?apikey=${apikey}"
-        //         '''
-        //     }
-        // }
+        stage('Test API mock') {
+            agent{
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    test -f build/index.html
+                    echo "Run collection -> Place order mockoon"
+                    npm install newman
+                    node_modules/.bin/newman --version
+                    
+                    node_modules/.bin/newman run "https://api.getpostman.com/collections/2506820-6af30d83-4cdd-4beb-a23b-552de05e731b?apikey=${apikey}" "\""  -e "https://api.getpostman.com/environments/2506820-78a4fa7a-2c40-4b01-919c-8d827e09a472?apikey=${apikey}"
+                '''
+            }
+        }
         stage('Deploy') {
             agent{
                 docker {
