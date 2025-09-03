@@ -73,8 +73,8 @@ pipeline {
                 sh 'docker build -t selenium-pytest .'
 
                 echo 'Launching container for pytest…'
-                sh 'pytest -v --tb=long --capture=no tests/test_showcase.py'
-                //sh 'docker run --rm -v "$WORKSPACE":/app selenium-pytest'
+                //sh 'pytest -v --tb=long --capture=no tests/test_showcase.py'
+                sh 'docker run --rm -v "$WORKSPACE":/app selenium-pytest'
             }
         }
         stage('Deploy') {
