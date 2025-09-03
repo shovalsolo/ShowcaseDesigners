@@ -13,6 +13,10 @@ pipeline {
                 sh '''
                     pwd
                     ls -la
+                    npm install
+                    npm --version
+                    node install
+                    node --version
                     echo "Hello with docker"
                     pwd
                     ls -la
