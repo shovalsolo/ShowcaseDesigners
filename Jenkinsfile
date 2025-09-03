@@ -70,8 +70,8 @@ pipeline {
                 git branch: 'master',
                     url:    'https://github.com/shovalsolo/Python_Selenium_Framework.git'
                 sh '''
-                    node_modules/.bin/python --version
-                    node_modules/.bin/python3 --version
+                    python --version
+                    python3 --version
                 '''
                 echo 'Launching container for pytest…'
                 sh 'node_modules/.bin/python3 -m unittest tests/test_showcase.py'
