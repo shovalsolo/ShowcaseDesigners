@@ -67,8 +67,7 @@ pipeline {
                 sh '''
                     echo "Run UI tests"
                     git clone -b master https://github.com/shovalsolo/Python_Selenium_Framework.git
-                    cd Python_Selenium_Framework
-                    pytest --html=reports/report.html --self-contained-html -v
+                    sh 'docker run --rm -v $PWD:/app selenium-pytest'
                 '''
             }
         }
