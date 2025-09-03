@@ -20,8 +20,6 @@ pipeline {
                     ls -la
                     node --version
                     npm --version
-                    // npm ci
-                    // npm run build
                     echo "Hello with docker"
                     pwd
                     ls -la
@@ -39,7 +37,6 @@ pipeline {
                 sh '''
                     test -f build/index.html
                     echo "Hello Test stage"
-                    // npm test
                 '''
             }
         }
