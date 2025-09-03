@@ -39,7 +39,8 @@ pipeline {
                     test -f build/index.html
                     echo "Hello Test stage"
                     npm install newman
-                    newman run "https://api.getpostman.com/collections/2506820-3cc8834e-0344-4217-8a5f-209de287b5eb?apikey=${apikey}" "\"  -e "https://api.getpostman.com/environments/2506820-66734cba-0764-4875-b92f-7eb8a6d12c12?apikey=${apikey}"
+                    node_modules/.bin/newman --version
+                    node_modules/.bin/newman run "https://api.getpostman.com/collections/2506820-3cc8834e-0344-4217-8a5f-209de287b5eb?apikey=${apikey}" "\"  -e "https://api.getpostman.com/environments/2506820-66734cba-0764-4875-b92f-7eb8a6d12c12?apikey=${apikey}"
                 '''
             }
         }
