@@ -66,6 +66,9 @@ pipeline {
             steps {
                 sh '''
                     echo "Run UI tests"
+                    git url: 'https://github.com/shovalsolo/Python_Selenium_Framework.git', branch: 'master'
+                    cd Python_Selenium_Framework
+                    pytest --html=reports/report.html --self-contained-html -v
                 '''
             }
         }
