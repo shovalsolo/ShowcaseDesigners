@@ -49,10 +49,8 @@ pipeline {
             }
             steps {
                 sh '''
-                    test -f build/index.html
-                    echo "Hello Test stage"
                     pwd
-                    ./Users/macsho/Programming/Python/Postman/newman/run_newman.sh
+                    /Users/macsho/Programming/Python/Postman/newman/run_newman.sh
                 '''
             }
         }
