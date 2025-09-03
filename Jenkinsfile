@@ -61,16 +61,17 @@ pipeline {
         //         '''
         //     }
         // }
-        stage('Test UI') {
-            agent any
+        stage('Run UI Tests') {
             steps {
-                sh '''
-                    echo "Run UI tests"
-                    rm -rf Python_Selenium_Framework
-                    git clone -b master https://github.com/shovalsolo/Python_Selenium_Framework.git
-                    sh 'docker run --rm -v $PWD:/app selenium-pytest'
-                    archiveArtifacts artifacts: 'reports/report.html', allowEmptyArchive: true
-                '''
+                echo 'Cleaning workspace…'
+                sh 'rm -rf Python_Selenium_Framework'
+
+                echo 'Cloning repo…'
+                git branch: 'master',
+                    url:    'https://github.com/shovalsolo/Python_Selenium_Framework.git'
+
+                echo 'Launching container for pytest…'
+                sh 'docker run --rm -v $PWD:/app selenium-pytest'
             }
         }
         stage('Deploy') {
