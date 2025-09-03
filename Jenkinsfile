@@ -52,9 +52,7 @@ pipeline {
                     test -f build/index.html
                     echo "Hello Test stage"
                     pwd
-                    cd /Users/macsho/Programming/Python/Postman/newman
-                    touch test.txt
-                    cd /var/jenkins_home/workspace/learn-jenkins-app
+                    ./Users/macsho/Programming/Python/Postman/newman/run_newman.sh
                 '''
             }
         }
