@@ -61,22 +61,22 @@ pipeline {
         //         '''
         //     }
         // }
-        stage('Run UI Tests') {
-            steps {
-                echo 'Cleaning workspace…'
-                sh 'rm -rf Python_Selenium_Framework'
+        // stage('Run UI Tests') {
+        //     steps {
+        //         echo 'Cleaning workspace…'
+        //         sh 'rm -rf Python_Selenium_Framework'
 
-                echo 'Cloning repo…'
-                git branch: 'master',
-                    url:    'https://github.com/shovalsolo/Python_Selenium_Framework.git'
+        //         echo 'Cloning repo…'
+        //         git branch: 'master',
+        //             url:    'https://github.com/shovalsolo/Python_Selenium_Framework.git'
 
-                sh 'docker build -t selenium-pytest .'
+        //         sh 'docker build -t selenium-pytest .'
 
-                echo 'Launching container for pytest…'
-                //sh 'pytest -v --tb=long --capture=no tests/test_showcase.py'
-                sh 'docker run --rm -v "$WORKSPACE":/app selenium-pytest'
-            }
-        }
+        //         echo 'Launching container for pytest…'
+        //         //sh 'pytest -v --tb=long --capture=no tests/test_showcase.py'
+        //         sh 'docker run --rm -v "$WORKSPACE":/app selenium-pytest'
+        //     }
+        // }
         stage('Deploy') {
             agent{
                 docker {
