@@ -48,7 +48,9 @@ pipeline {
                 }
             }
             steps {
-                sh '/Users/macsho/Programming/Python/Postman/newman/run_newman.sh'
+                sh ''''
+                    echo "/Users/macsho/Programming/Python/Postman/newman/run_newman.sh"
+                '''
             }
         }
         stage('Deploy') {
