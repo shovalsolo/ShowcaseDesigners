@@ -40,6 +40,24 @@ pipeline {
                 '''
             }
         }
+        stage('Test API') {
+            agent{
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    test -f build/index.html
+                    echo "Hello Test stage"
+                    pwd
+                    cd /Users/macsho/Programming/Python/Postman/newman
+                    touch test.txt
+                    cd /var/jenkins_home/workspace/learn-jenkins-app
+                '''
+            }
+        }
         stage('Deploy') {
             agent{
                 docker {
