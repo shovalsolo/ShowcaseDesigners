@@ -61,6 +61,12 @@ pipeline {
         //         '''
         //     }
         // }
+        stage('Test UI') {
+            agent any
+            steps {
+                sh 'run UI tests '
+            }
+        }
         stage('Deploy') {
             agent{
                 docker {
