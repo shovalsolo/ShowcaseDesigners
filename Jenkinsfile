@@ -8,15 +8,18 @@ pipeline {
 
     stages {
         stage('Build') {
-            agent any
+            agent{
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 sh '''
                     pwd
                     ls -la
-                    npm install
-                    npm --version
-                    node install
                     node --version
+                    npm --version
                     echo "Hello with docker"
                     pwd
                     ls -la
@@ -24,15 +27,26 @@ pipeline {
             }
         }
         stage('Test') {
-            agent any
+            agent{
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 sh '''
+                    test -f build/index.html
                     echo "Hello Test stage"
                 '''
             }
         }
         stage('Deploy') {
-            agent any
+            agent{
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 sh '''
                     npm install netlify-cli
@@ -42,6 +56,12 @@ pipeline {
                     node_modules/.bin/netlify deploy --prod
                 '''
             }
+        }
+    }
+    post {
+        always {
+            junit 'test-results/junit.xml'
+            echo "Cleaning up..."
         }
     }
 }
