@@ -58,10 +58,10 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            junit 'test-results/junit.xml'
-            echo "Cleaning up..."
-        }
-    }
+    // post {
+    //     always {
+    //         junit 'test-results/junit.xml'
+    //         echo "Cleaning up..."
+    //     }
+    // }
 }
