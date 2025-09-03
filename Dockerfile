@@ -27,6 +27,8 @@ RUN apt-get update \
        libxrandr2 \
        libgbm1 \
        libxi6 \
+       python3 \
+       python3-pip \
        xdg-utils \
     && mkdir -p /etc/apt/keyrings \
     && wget -qO /etc/apt/keyrings/google-chrome.gpg \

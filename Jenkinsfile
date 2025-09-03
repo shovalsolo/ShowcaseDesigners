@@ -70,11 +70,9 @@ pipeline {
                 git branch: 'master',
                     url:    'https://github.com/shovalsolo/Python_Selenium_Framework.git'
                 sh '''
-                        sudo apt update
-                        sudo apt install python3 python3-pip
-                        node_modules/.bin/python --version
-                        node_modules/.bin/python3 --version
-                    '''
+                    node_modules/.bin/python --version
+                    node_modules/.bin/python3 --version
+                '''
                 echo 'Launching container for pytest…'
                 sh 'node_modules/.bin/python3 -m unittest tests/test_showcase.py'
             }
