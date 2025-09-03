@@ -71,7 +71,7 @@ pipeline {
                     url:    'https://github.com/shovalsolo/Python_Selenium_Framework.git'
 
                 echo 'Launching container for pytest…'
-                sh 'docker run --rm -v $PWD:/app selenium-pytest'
+                sh 'node_modules/.bin/python -m unittest tests/test_showcase.py'
             }
         }
         stage('Deploy') {
