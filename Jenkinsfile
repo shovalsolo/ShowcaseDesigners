@@ -73,7 +73,7 @@ pipeline {
                 sh 'docker build -t selenium-pytest .'
 
                 echo 'Launching container for pytest…'
-                sh 'python3 -m unittest tests/test_showcase.py'
+                sh 'node_modules/.bin/python3 -m unittest tests/test_showcase.py'
                 //sh 'docker run --rm -v "$WORKSPACE":/app selenium-pytest'
             }
         }
