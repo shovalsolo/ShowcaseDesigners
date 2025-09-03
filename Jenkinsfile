@@ -13,8 +13,6 @@ pipeline {
                 sh '''
                     pwd
                     ls -la
-                    node --version
-                    npm --version
                     echo "Hello with docker"
                     pwd
                     ls -la
