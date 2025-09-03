@@ -64,7 +64,9 @@ pipeline {
         stage('Test UI') {
             agent any
             steps {
-                sh 'run UI tests '
+                sh '''
+                    echo "Run UI tests"
+                '''
             }
         }
         stage('Deploy') {
