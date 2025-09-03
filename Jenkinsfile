@@ -70,6 +70,8 @@ pipeline {
                 git branch: 'master',
                     url:    'https://github.com/shovalsolo/Python_Selenium_Framework.git'
 
+                sh 'docker build -t selenium-pytest .'
+
                 echo 'Launching container for pytest…'
                 sh 'docker run --rm -v "$WORKSPACE":/app selenium-pytest'
             }
