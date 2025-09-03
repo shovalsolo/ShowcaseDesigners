@@ -68,6 +68,7 @@ pipeline {
                     echo "Run UI tests"
                     git clone -b master https://github.com/shovalsolo/Python_Selenium_Framework.git
                     sh 'docker run --rm -v $PWD:/app selenium-pytest'
+                    archiveArtifacts artifacts: 'reports/report.html', allowEmptyArchive: true
                 '''
             }
         }
